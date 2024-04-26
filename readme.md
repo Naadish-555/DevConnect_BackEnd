@@ -1,0 +1,1 @@
+mongodb+srv://gamdev9k:IZ2kO99MXd6otnAf@backenddb.dpqe8nz.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB
