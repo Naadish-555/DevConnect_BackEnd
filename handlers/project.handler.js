@@ -18,4 +18,11 @@ const updateProject = async (req, res) => {
     res.send(newDbResp);
 }
 
-module.exports = {createProject,getProject, updateProject};
+const deleteProject = async (req, res) => {
+    const newDbResp = await projectModel.deleteOne({
+        _id : req.params.projectId
+    });
+    res.send(newDbResp);
+}
+
+module.exports = {createProject,getProject, updateProject,deleteProject};

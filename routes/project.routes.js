@@ -6,6 +6,6 @@ const projectHandlers = require("../handlers/project.handler");
 router.post("/project",projectHandlers.createProject); 
 router.get("/project",projectHandlers.getProject);
 router.patch("/project/:projectId",projectHandlers.updateProject);
-
+router.delete("/project/:projectId",projectHandlers.deleteProject);
 
 module.exports = router;
