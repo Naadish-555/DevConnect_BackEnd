@@ -8,7 +8,7 @@ const createCategory = async (req,res) => {
 
 const getCategory = async (req,res) => {
     const projects = await categoriesModel.find();
-    res.send(projects);
+    res.send(projects)
 } 
 
 // request contains basically 3 types of inputs

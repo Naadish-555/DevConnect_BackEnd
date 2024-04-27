@@ -6,7 +6,7 @@ const createProject = async (req,res) => {
 }
 
 const getProject = async (req,res) => {
-    const projects = await projectModel.find();
+    const projects = await projectModel.find().populate("categoryIds");
     res.send(projects);
 } 
 
