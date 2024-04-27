@@ -4,7 +4,7 @@ const categoriesModel = require("./categories.model")
 const projectSchema = new mongoose.Schema({
     id:String,
     categoryIds:{
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'categoriesModel' }],
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'categories' }],
     validate: {
       validator: async function (categories) {
         const count = await categoriesModel.countDocuments({ _id: { $in: categories } });
