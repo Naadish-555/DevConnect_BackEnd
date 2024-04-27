@@ -4,7 +4,7 @@ const userHandler = require("../handlers/user.handler");
 
 //post = create
 router.post("/register",userHandler.register); 
-// router.get("/login",userHandler.login);
+router.post("/login",userHandler.login);
 // router.patch("/user/:projectId",projectHandlers.updateProject);
 // router.delete("/user/:projectId",projectHandlers.deleteProject);
 
