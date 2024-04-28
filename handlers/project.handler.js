@@ -1,12 +1,19 @@
+const {  mongoose } = require("mongoose");
 const projectModel = require("../models/project.model")
 const createProject = async (req,res) => {
     const payload = req.body;
+    const userId = req.userId;
+    payload.ownerId = userId;
+    console.log(payload);
     const dbResp = await projectModel.create(payload);
     res.send(dbResp);
 }
 
 const getProject = async (req,res) => {
-    const projects = await projectModel.find().populate("categoryIds");
+    const projects = await projectModel.find().populate(["categoryIds",{
+        path: 'ownerId',
+        select: 'username email', // Projection: include only username and email fields
+      }]);
     res.send(projects);
 } 
 
@@ -19,8 +26,9 @@ const updateProject = async (req, res) => {
 }
 
 const deleteProject = async (req, res) => {
-    const newDbResp = await projectModel.deleteOne({
-        _id : req.params.projectId
+    const projectId = req.params.projectId;
+    const newDbResp = await projectModel.findOneAndDelete({
+        _id: projectId 
     });
     res.send(newDbResp);
 }

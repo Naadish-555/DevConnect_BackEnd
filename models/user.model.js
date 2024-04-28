@@ -23,13 +23,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    projectsPosted:{
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
-    },
-    projectsJoined:{
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
-    },   
+    }
     },{
         timestamps : true
     });
