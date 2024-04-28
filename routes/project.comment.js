@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const projectCommentsHandler = require("../handlers/project.comments.handler"); 
-const verifyToken = require("../middleware/middleware.authMiddleware")
+const { verifyToken } = require("../middleware/middleware.authMiddleware");
 
 //post = create
 router.post("/projectComments",verifyToken,projectCommentsHandler.createComment); 
