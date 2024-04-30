@@ -10,8 +10,14 @@ const createProject = async (req,res) => {
 }
 
 const getProject = async (req,res) => {
-    const projects = await projectModel.find().populate(["categoryIds",{
+    const filter = req.params.projectId ? {
+        _id : req.params.projectId
+    } : {};
+    const projects = await projectModel.find(filter).populate(["categoryIds",{
         path: 'ownerId',
+        select: 'username email', // Projection: include only username and email fields
+      },{
+        path: 'collaboratorIds',
         select: 'username email', // Projection: include only username and email fields
       }]);
     res.send(projects);
