@@ -1,6 +1,7 @@
 require("dotenv").config() //header file
 require("./connectors/mongo.connector")
 const express = require("express");
+const cors = require('cors')
 const projectRouter =require("./routes/project.routes");
 const projectCommentRouter =require("./routes/project.comment");
 const categoryRouter = require("./routes/categories.routes");
@@ -10,7 +11,8 @@ const inviteRouter = require("./routes/invites.routes");
 console.log(process.env.MONGO_CONNECTION_STRING);
 
 const app = express();
-const PORT = 3000;
+app.use(cors("*"))
+const PORT = 3001;
 
 app.use(express.json());
 
