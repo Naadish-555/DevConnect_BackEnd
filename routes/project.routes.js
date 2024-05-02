@@ -5,7 +5,7 @@ const { verifyOwner, verifyToken } = require("../middleware/middleware.authMiddl
 
 //post = create
 router.post("/project",verifyToken,projectHandlers.createProject); 
-router.get("/project",projectHandlers.getProject);
+router.get("/project/:projectId?",projectHandlers.getProject);
 router.patch("/project/:projectId",[verifyToken, verifyOwner],projectHandlers.updateProject);
 router.delete("/project/:projectId",[verifyToken, verifyOwner],projectHandlers.deleteProject);
 
