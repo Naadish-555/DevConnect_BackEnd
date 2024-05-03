@@ -39,4 +39,20 @@ const login = async (req, res) => {
     }
     };
 
-module.exports = {register,login}
+    const getUser = async (req,res) => {
+        const filter = req.params.userId ? {
+            _id : req.params.userId
+        } : {};
+        const users = await userModel.find(filter, {"firstName"  : 1,"lastName" : 1,
+        "occupation" : 1,"description" : 1, email: 1});
+        res.send(users);
+    } 
+
+    const updateUser = async (req, res) => {
+        const newPayload = req.body;
+        const newDbResp = await userModel.updateOne({
+            _id : req.params.userId
+        }, newPayload);
+        res.send(newDbResp);
+    }
+module.exports = {register,login,getUser,updateUser}
