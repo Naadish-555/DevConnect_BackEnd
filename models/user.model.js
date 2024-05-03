@@ -18,7 +18,16 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    projectsOwnedIds:{
+        type:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }]
+    },
+    occupation:{
+        type:String,
+    },
+    description:{
+        type:String,
+    },
     },{
         timestamps : true
     });
